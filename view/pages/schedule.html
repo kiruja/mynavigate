@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule - Navigate</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Active tab highlighting */
+        .menu-item a[href*="schedule"] {
+            background-color: var(--hover-color);
+            color: var(--text-color);
+        }
+        .menu-item a[href*="schedule"] .material-icons {
+            color: var(--accent-color);
+        }
+
+        .calendar-container {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin: 2rem auto;
+            max-width: 1000px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .calendar-nav {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .calendar-nav:hover {
+            background-color: var(--hover-color);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .calendar-day:hover {
+            z-index: 2;
+        }
+
+        .calendar-day:hover {
+            background: var(--hover-color);
+            transform: translateY(-2px);
+        }
+
+        .calendar-day.has-event {
+            background: #e8f5e9;
+            border: 2px solid #4CAF50;
+        }
+
+        .calendar-day .date {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .event-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+        }
+
+        .event-popup {
+            display: none;
+            position: absolute;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            padding: 1rem;
+            width: 250px;
+            z-index: 1000;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .event-popup::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid white;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate(-50%, 10px);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+        }
+
+        .calendar-day:hover .event-popup {
+            display: block;
+        }
+
+        .event-title {
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .event-time {
+            color: #666;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .day-header {
+            text-align: center;
+            font-weight: bold;
+            padding: 0.5rem;
+            background: var(--hover-color);
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <a href="../../index.html">
+                    <span class="material-icons">explore</span>
+                    <span class="logo-text">Navigate</span>
+                </a>
+            </div>
+            <h1 class="title">Navigate</h1>
+            <div class="auth-buttons">
+                <button class="auth-btn">
+                    <span class="material-icons">person_outline</span>
+                    <span>Sign In</span>
+                </button>
+                <button class="auth-btn">
+                    <span class="material-icons">person_add</span>
+                    <span>Sign Up</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <nav class="horizontal-menu">
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <a href="services.html">
+                        <span class="material-icons">miscellaneous_services</span>
+                        <span class="menu-text">Services</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="schedule.html">
+                        <span class="material-icons">calendar_today</span>
+                        <span class="menu-text">Schedule</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="dashboard.html">
+                        <span class="material-icons">dashboard</span>
+                        <span class="menu-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="resources.html">
+                        <span class="material-icons">library_books</span>
+                        <span class="menu-text">Resources</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="about.html">
+                        <span class="material-icons">info</span>
+                        <span class="menu-text">About</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="content-header">
+            <div class="content-title">
+                <h1>Schedule</h1>
+                <p>View upcoming history sessions and events</p>
+            </div>
+        </div>
+
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <button class="calendar-nav" id="prevMonth"><span class="material-icons">chevron_left</span></button>
+                <h2 id="currentMonth">October 2025</h2>
+                <button class="calendar-nav" id="nextMonth"><span class="material-icons">chevron_right</span></button>
+            </div>
+            <div class="calendar-grid" id="calendarGrid">
+                <!-- Calendar content will be loaded dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sample history sessions data
+            const historySessions = {
+                '2025-10-20': [
+                    { title: 'World History', time: '10:00 AM - 11:30 AM', topic: 'Ancient Civilizations' },
+                    { title: 'US History', time: '2:00 PM - 3:30 PM', topic: 'American Revolution' }
+                ],
+                '2025-10-22': [
+                    { title: 'European History', time: '11:00 AM - 12:30 PM', topic: 'Renaissance Period' }
+                ],
+                '2025-10-24': [
+                    { title: 'Ancient Civilizations', time: '1:00 PM - 2:30 PM', topic: 'Ancient Greece' }
+                ],
+                '2025-10-25': [
+                    { title: 'US History', time: '10:00 AM - 11:30 AM', topic: 'Civil War' },
+                    { title: 'Modern History', time: '3:00 PM - 4:30 PM', topic: 'Civil Rights Movement' }
+                ],
+                '2025-10-27': [
+                    { title: 'European History', time: '2:00 PM - 3:30 PM', topic: 'French Revolution' }
+                ],
+                '2025-10-29': [
+                    { title: 'World History', time: '11:00 AM - 12:30 PM', topic: 'Industrial Revolution' },
+                    { title: 'US History', time: '3:00 PM - 4:30 PM', topic: 'World War II' }
+                ],
+                '2025-10-31': [
+                    { title: 'European History', time: '1:00 PM - 2:30 PM', topic: 'Cold War Era' }
+                ]
+            };
+
+            function generateCalendar() {
+                const calendarGrid = document.getElementById('calendarGrid');
+                calendarGrid.innerHTML = '';
+
+                // Add day headers
+                const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                days.forEach(day => {
+                    const dayHeader = document.createElement('div');
+                    dayHeader.className = 'day-header';
+                    dayHeader.textContent = day;
+                    calendarGrid.appendChild(dayHeader);
+                });
+
+                // Add calendar days
+                const currentDate = new Date(2025, 9, 1); // October 2025
+                const lastDay = new Date(2025, 10, 0).getDate();
+                const firstDayIndex = currentDate.getDay();
+
+                // Add empty cells for days before the 1st
+                for (let i = 0; i < firstDayIndex; i++) {
+                    const emptyDay = document.createElement('div');
+                    emptyDay.className = 'calendar-day';
+                    calendarGrid.appendChild(emptyDay);
+                }
+
+                // Add actual days
+                for (let day = 1; day <= lastDay; day++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day';
+                    const dateString = `2025-10-${day.toString().padStart(2, '0')}`;
+                    
+                    // Check if there are events on this day
+                    const hasEvents = historySessions[dateString];
+                    if (hasEvents) {
+                        dayElement.classList.add('has-event');
+                    }
+
+                    dayElement.innerHTML = `
+                        <div class="date">${day}</div>
+                        ${hasEvents ? '<div class="event-dot"></div>' : ''}
+                        ${hasEvents ? `
+                            <div class="event-popup">
+                                ${hasEvents.map(event => `
+                                    <div class="event-item">
+                                        <div class="event-title">${event.title}</div>
+                                        <div class="event-time">
+                                            <span class="material-icons" style="font-size: 16px;">schedule</span>
+                                            ${event.time}
+                                        </div>
+                                        <div class="event-topic" style="margin-top: 0.25rem; font-size: 0.9rem;">
+                                            Topic: ${event.topic}
+                                        </div>
+                                    </div>
+                                `).join('<hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">')}
+                            </div>
+                        ` : ''}
+                    `;
+
+                    calendarGrid.appendChild(dayElement);
+                }
+            }
+
+            // Initialize calendar
+            generateCalendar();
+
+            // Add month navigation functionality
+            document.getElementById('prevMonth').addEventListener('click', () => {
+                // For demo, just show an alert
+                alert('Previous month navigation would be implemented here');
+            });
+
+            document.getElementById('nextMonth').addEventListener('click', () => {
+                // For demo, just show an alert
+                alert('Next month navigation would be implemented here');
+            });
+        });
+    </script>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@navigate.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link"><span class="material-icons">facebook</span></a>
+                    <a href="#" class="social-link"><span class="material-icons">twitter</span></a>
+                    <a href="#" class="social-link"><span class="material-icons">linkedin</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Navigate. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

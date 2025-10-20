@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Navigate</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Active tab highlighting */
+        .menu-item a[href*="dashboard"] {
+            background-color: var(--hover-color);
+            color: var(--text-color);
+        }
+        .menu-item a[href*="dashboard"] .material-icons {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <a href="../../index.html">
+                    <span class="material-icons">explore</span>
+                    <span class="logo-text">Navigate</span>
+                </a>
+            </div>
+            <h1 class="title">Navigate</h1>
+            <div class="auth-buttons">
+                <button class="auth-btn">
+                    <span class="material-icons">person_outline</span>
+                    <span>Sign In</span>
+                </button>
+                <button class="auth-btn">
+                    <span class="material-icons">person_add</span>
+                    <span>Sign Up</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <nav class="horizontal-menu">
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <a href="services.html">
+                        <span class="material-icons">miscellaneous_services</span>
+                        <span class="menu-text">Services</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="schedule.html">
+                        <span class="material-icons">calendar_today</span>
+                        <span class="menu-text">Schedule</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="dashboard.html">
+                        <span class="material-icons">dashboard</span>
+                        <span class="menu-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="resources.html">
+                        <span class="material-icons">library_books</span>
+                        <span class="menu-text">Resources</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="about.html">
+                        <span class="material-icons">info</span>
+                        <span class="menu-text">About</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="dashboard-header">
+            <h1>Learning Progress Dashboard</h1>
+            <div class="date-range">
+                <span class="material-icons">date_range</span>
+                <div class="date-inputs">
+                    <div class="date-field">
+                        <label for="fromDate">From:</label>
+                        <input type="date" id="fromDate" value="2025-10-01">
+                    </div>
+                    <div class="date-field">
+                        <label for="toDate">To:</label>
+                        <input type="date" id="toDate" value="2025-10-18">
+                    </div>
+                </div>
+                <button class="update-btn">
+                    <span class="material-icons">refresh</span>
+                    Update
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-summary">
+            <div class="summary-card">
+                <span class="material-icons">live_tv</span>
+                <div class="summary-info">
+                    <h3>Live Sessions</h3>
+                    <p>8 Attended</p>
+                </div>
+            </div>
+            <div class="summary-card">
+                <span class="material-icons">video_library</span>
+                <div class="summary-info">
+                    <h3>Topic Videos</h3>
+                    <p>12 Watched</p>
+                </div>
+            </div>
+            <div class="summary-card">
+                <span class="material-icons">menu_book</span>
+                <div class="summary-info">
+                    <h3>Chapters Read</h3>
+                    <p>15 Completed</p>
+                </div>
+            </div>
+            <div class="summary-card">
+                <span class="material-icons">task_alt</span>
+                <div class="summary-info">
+                    <h3>Overall Progress</h3>
+                    <p>75% Complete</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="progress-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Topic</th>
+                        <th>Type</th>
+                        <th>Duration</th>
+                        <th>Status</th>
+                        <th>Progress</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Oct 18, 2025</td>
+                        <td>United States History Lecture</td>
+                        <td><span class="badge live">Live Session</span></td>
+                        <td>60 mins</td>
+                        <td><span class="status completed">Completed</span></td>
+                        <td>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 100%"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Oct 17, 2025</td>
+                        <td>World History Quiz Review</td>
+                        <td><span class="badge recorded">Video</span></td>
+                        <td>45 mins</td>
+                        <td><span class="status completed">Completed</span></td>
+                        <td>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 100%"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Oct 16, 2025</td>
+                        <td>European History Chapter 3</td>
+                        <td><span class="badge reading">Chapter</span></td>
+                        <td>30 mins</td>
+                        <td><span class="status in-progress">In Progress</span></td>
+                        <td>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 60%"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Oct 15, 2025</td>
+                        <td>Ancient Civilization Test Review</td>
+                        <td><span class="badge live">Live Session</span></td>
+                        <td>90 mins</td>
+                        <td><span class="status completed">Completed</span></td>
+                        <td>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 100%"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Oct 14, 2025</td>
+                        <td>World History Lecture</td>
+                        <td><span class="badge recorded">Video</span></td>
+                        <td>75 mins</td>
+                        <td><span class="status not-started">Not Started</span></td>
+                        <td>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@navigate.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link"><span class="material-icons">facebook</span></a>
+                    <a href="#" class="social-link"><span class="material-icons">twitter</span></a>
+                    <a href="#" class="social-link"><span class="material-icons">linkedin</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Navigate. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

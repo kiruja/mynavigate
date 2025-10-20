@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Sessions - Navigate</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/live-sessions.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+       
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <a href="../../index.html">
+                    <span class="material-icons">explore</span>
+                    <span class="logo-text">Navigate</span>
+                </a>
+            </div>
+            <div class="header-center">
+                <h1>Navigate</h1>
+            </div>
+            <div class="auth-buttons">
+                <button class="auth-btn">
+                    <span class="material-icons">person_outline</span>
+                    <span>Sign In</span>
+                </button>
+                <button class="auth-btn">
+                    <span class="material-icons">person_add</span>
+                    <span>Sign Up</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+       
+        <nav class="horizontal-menu">
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <a href="services.html">
+                        <span class="material-icons">miscellaneous_services</span>
+                        <span class="menu-text">Services</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="schedule.html">
+                        <span class="material-icons">calendar_today</span>
+                        <span class="menu-text">Schedule</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="dashboard.html">
+                        <span class="material-icons">dashboard</span>
+                        <span class="menu-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="resources.html">
+                        <span class="material-icons">library_books</span>
+                        <span class="menu-text">Resources</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="about.html">
+                        <span class="material-icons">info</span>
+                        <span class="menu-text">About</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="session-grid">
+             <div class="content-header">
+            <div class="content-title">
+                <h1>Live Sessions</h1>
+                <p>Schedule and join your live learning sessions</p>
+            </div>
+        </div>
+            <!-- Top Container: Upcoming Sessions -->
+                    <div class="container" id="upcomingSessionsContainer">
+            <div class="section-header">
+                <div class="section-header-content">
+                    <h2>Upcoming Sessions</h2>
+                    <p>View and manage your scheduled sessions</p>
+                </div>
+                <div class="controls">
+                    <button id="bookNewBtn" class="primary-btn">
+                        <span class="material-icons">add</span>
+                        Book New Session
+                    </button>
+                </div>
+            </div>
+            <div class="upcoming-sessions">
+                <!-- Session cards will be added here dynamically -->
+            </div>
+            <div class="pagination">
+                <button id="prevPage" class="pagination-btn" disabled>
+                    <span class="material-icons">chevron_left</span>
+                </button>
+                <span id="pageInfo">Page 1 of 1</span>
+                <button id="nextPage" class="pagination-btn" disabled>
+                    <span class="material-icons">chevron_right</span>
+                </button>
+            </div>
+        </div>
+
+            <!-- Bottom Container: Session Booking -->
+            <div class="session-container booking-container" id="bookingContainer">
+                <div class="section-header">
+                    <h2>Book a Session</h2>
+                </div>
+                <div class="section-actions">
+                    <button class="back-btn" id="backToSessions">
+                        <span class="material-icons">arrow_back</span>
+                        Back to Sessions
+                    </button>
+                </div>
+                <div class="subject-selection">
+                    <h3>Select Subject</h3>
+                    <ul class="subject-list">
+                        <li class="subject-item" data-subject="United States History">
+                            <span class="material-icons">functions</span>
+                            APUSH
+                        </li>
+                        <li class="subject-item" data-subject="World History">
+                            <span class="material-icons">speed</span>
+                            WHAP
+                        </li>
+                        <li class="subject-item" data-subject="European History">
+                            <span class="material-icons">science</span>
+                            AP African American History
+                        </li>
+                        <li class="subject-item" data-subject="Ancient Civilizations">
+                            <span class="material-icons">biotech</span>
+                            AP European History
+                        </li>
+                        <li class="subject-item" data-subject="Modern History">
+                            <span class="material-icons">menu_book</span>
+                            World History
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="calendar" id="sessionCalendar">
+                    <div class="calendar-header">
+                        <button class="calendar-nav"><span class="material-icons">chevron_left</span></button>
+                        <h3>October 2025</h3>
+                        <button class="calendar-nav"><span class="material-icons">chevron_right</span></button>
+                    </div>
+                    <div class="calendar-grid">
+                        <!-- Calendar days will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="time-slots" id="timeSlots">
+                    <h3>Available Time Slots</h3>
+                    <div class="time-slot">
+                        <span class="material-icons">schedule</span>
+                        9:00 AM - 10:00 AM
+                    </div>
+                    <div class="time-slot">
+                        <span class="material-icons">schedule</span>
+                        10:30 AM - 11:30 AM
+                    </div>
+                    <div class="time-slot">
+                        <span class="material-icons">schedule</span>
+                        1:00 PM - 2:00 PM
+                    </div>
+                    <div class="time-slot">
+                        <span class="material-icons">schedule</span>
+                        2:30 PM - 3:30 PM
+                    </div>
+                    <div class="time-slot">
+                        <span class="material-icons">schedule</span>
+                        4:00 PM - 5:00 PM
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@navigate.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link"><span class="material-icons">facebook</span></a>
+                    <a href="#" class="social-link"><span class="material-icons">twitter</span></a>
+                    <a href="#" class="social-link"><span class="material-icons">linkedin</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Navigate. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const subjectItems = document.querySelectorAll('.subject-item');
+            const calendar = document.getElementById('sessionCalendar');
+            const timeSlots = document.getElementById('timeSlots');
+            const calendarGrid = document.querySelector('.calendar-grid');
+            const upcomingSessionsContainer = document.getElementById('upcomingSessionsContainer');
+            const bookNewBtn = document.getElementById('bookNewBtn');
+            const bookingContainer = document.getElementById('bookingContainer');
+            const backToSessions = document.getElementById('backToSessions');
+            const subscribeBtn = document.createElement('button');
+            subscribeBtn.className = 'subscribe-btn';
+            // Pagination setup
+            const sessionsPerPage = 5;
+            let currentPage = 1;
+            const prevPageBtn = document.getElementById('prevPage');
+            const nextPageBtn = document.getElementById('nextPage');
+            const pageInfo = document.getElementById('pageInfo');
+            const upcomingSessions = document.querySelector('.upcoming-sessions');
+
+            function updatePagination() {
+                const sessions = JSON.parse(localStorage.getItem('sessions') || '[]');
+                const totalPages = Math.ceil(sessions.length / sessionsPerPage);
+                
+                pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+                prevPageBtn.disabled = currentPage === 1;
+                nextPageBtn.disabled = currentPage === totalPages;
+
+                // Display current page sessions
+                const start = (currentPage - 1) * sessionsPerPage;
+                const end = start + sessionsPerPage;
+                const currentSessions = sessions.slice(start, end);
+
+                // Clear current display
+                upcomingSessions.innerHTML = '';
+
+                // Add current page sessions
+                currentSessions.forEach(session => {
+                    const sessionCard = createSessionCard(session);
+                    upcomingSessions.appendChild(sessionCard);
+                });
+            }
+
+            function createSessionCard(session) {
+                const card = document.createElement('div');
+                card.className = 'session-card';
+                card.innerHTML = `
+                    <div class="session-info">
+                        <h4>${session.subject.charAt(0).toUpperCase() + session.subject.slice(1)}</h4>
+                        <p class="session-date">${session.date} - ${session.time}</p>
+                    </div>
+                    <button class="join-session-btn">
+                        <span class="material-icons">video_call</span>
+                        Join
+                    </button>
+                `;
+
+                card.querySelector('.join-session-btn').addEventListener('click', function() {
+                    const params = new URLSearchParams();
+                    params.set('subject', session.subject);
+                    params.set('date', session.date);
+                    params.set('time', session.time);
+                    params.set('meetLink', session.meetLink);
+                    window.location.href = `join-session.html?${params.toString()}`;
+                });
+
+                return card;
+            }
+
+            // Pagination event listeners
+            prevPageBtn.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    updatePagination();
+                }
+            });
+
+            nextPageBtn.addEventListener('click', () => {
+                const sessions = JSON.parse(localStorage.getItem('sessions') || '[]');
+                const totalPages = Math.ceil(sessions.length / sessionsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    updatePagination();
+                }
+            });
+
+            // Initial pagination setup
+            updatePagination();
+
+            // Subject selection handling
+            subjectItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    console.log('Subject clicked:', this.textContent.trim());
+                    // Remove active class from all subjects
+                    subjectItems.forEach(si => si.classList.remove('active'));
+                    // Add active class to selected subject
+                    this.classList.add('active');
+                    
+                    selectedSubject = this.textContent.trim();
+                    
+                    // Show calendar and reset subsequent sections
+                    calendar.style.display = 'block';
+                    calendar.classList.add('active');
+                    timeSlots.classList.remove('active');
+                    timeSlots.style.display = 'none';
+                    
+                    if (subscribeBtn) {
+                        subscribeBtn.classList.remove('active');
+                    }
+                    
+                    // Reset calendar selection
+                    const previousSelected = calendarGrid.querySelector('.selected');
+                    if (previousSelected) {
+                        previousSelected.classList.remove('selected');
+                    }
+                    
+                    // Generate and show calendar
+                    generateCalendar();
+                    
+                    // Scroll to calendar
+                    calendar.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            // Load and display sessions with pagination
+            const loadSessions = () => {
+                const sessions = JSON.parse(localStorage.getItem('sessions') || '[]');
+                updatePagination(); // This will handle displaying the correct page of sessions
+            };
+
+            // Load existing sessions when the page loads
+            loadSessions();
+
+            // State
+            let selectedSubject = '';
+            let selectedDate = '';
+            let selectedTime = '';
+            let isUpcomingMinimized = false;
+
+            // Book new session button functionality
+            bookNewBtn.addEventListener('click', function() {
+                upcomingSessionsContainer.style.display = 'none';
+                bookingContainer.style.display = 'block';
+                bookingContainer.classList.add('active');
+                
+                // Reset selections
+                selectedSubject = '';
+                selectedDate = '';
+                selectedTime = '';
+                subjectItems.forEach(i => i.classList.remove('selected'));
+                calendar.classList.remove('active');
+                timeSlots.classList.remove('active');
+                
+                // Show subject selection first
+                document.querySelector('.subject-selection').style.display = 'block';
+                calendar.style.display = 'none';
+                timeSlots.style.display = 'none';
+            });
+
+            // Book new session button
+            bookNewBtn.addEventListener('click', function() {
+                bookingContainer.classList.add('active');
+                if (!isUpcomingMinimized) {
+                    toggleUpcoming.click(); // Minimize the upcoming sessions when showing booking form
+                }
+                // Reset selections
+                selectedSubject = '';
+                selectedDate = '';
+                selectedTime = '';
+                subjectItems.forEach(i => i.classList.remove('selected'));
+                calendar.classList.remove('active');
+                timeSlots.classList.remove('active');
+                
+                // Show subject selection first
+                document.querySelector('.subject-selection').style.display = 'block';
+                calendar.style.display = 'none';
+                timeSlots.style.display = 'none';
+            });
+
+            // Back to sessions button
+            backToSessions.addEventListener('click', function() {
+                bookingContainer.style.display = 'none';
+                bookingContainer.classList.remove('active');
+                upcomingSessionsContainer.style.display = 'block';
+                resetBookingForm();
+            });
+
+            // Book another session button
+            bookAnotherBtn.addEventListener('click', function() {
+                resetBookingForm();
+            });
+
+            // View available sessions button
+            viewAvailableBtn.addEventListener('click', function() {
+                successMessage.classList.remove('active');
+                successActions.classList.remove('active');
+                if (isUpcomingMinimized) {
+                    maximizeUpcoming.click();
+                }
+            });
+
+            // Reset booking form helper
+            function resetBookingForm() {
+                selectedSubject = '';
+                selectedDate = '';
+                selectedTime = '';
+                subjectItems.forEach(i => i.classList.remove('selected'));
+                calendar.classList.remove('active');
+                timeSlots.classList.remove('active');
+                subscribeBtn.classList.remove('active');
+                successMessage.classList.remove('active');
+                successActions.classList.remove('active');
+            }
+
+            // Subject selection
+            subjectItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    if (!isUpcomingMinimized) {
+                        toggleUpcoming.click(); // Automatically minimize upcoming sessions
+                    }
+                    // Remove selected class from all subjects
+                    subjectItems.forEach(i => i.classList.remove('selected'));
+                    // Add selected class to clicked subject
+                    this.classList.add('selected');
+                    selectedSubject = this.dataset.subject;
+                    calendar.classList.add('active');
+                    generateCalendar();
+                });
+            });
+
+            // Time slot selection with direct navigation
+            timeSlotElements.forEach(slot => {
+                slot.addEventListener('click', function() {
+                    if (selectedSubject && selectedDate) {
+                        timeSlotElements.forEach(s => s.classList.remove('selected'));
+                        this.classList.add('selected');
+                        selectedTime = this.textContent.trim();
+
+                        // Short delay to show the selection animation
+                        setTimeout(() => {
+                            const meetLink = generateMeetLink();
+                            
+                            // Store session details in localStorage
+                            const sessions = JSON.parse(localStorage.getItem('sessions') || '[]');
+                            sessions.push({
+                                subject: selectedSubject,
+                                date: selectedDate,
+                                time: selectedTime,
+                                meetLink: meetLink
+                            });
+                            localStorage.setItem('sessions', JSON.stringify(sessions));
+
+                            // Navigate to join session page
+                            const params = new URLSearchParams();
+                            params.set('subject', selectedSubject.charAt(0).toUpperCase() + selectedSubject.slice(1));
+                            params.set('date', selectedDate);
+                            params.set('time', selectedTime);
+                            params.set('meetLink', meetLink);
+                            window.location.href = `join-session.html?${params.toString()}`;
+                        }, 300); // Short delay for the selection animation
+                    }
+                });
+            });
+
+            // Generate calendar days
+            function generateCalendar() {
+                calendarGrid.innerHTML = '';
+                const daysInMonth = 31; // Simplified for demo
+                const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                
+                // Add day headers
+                days.forEach(day => {
+                    const dayHeader = document.createElement('div');
+                    dayHeader.className = 'calendar-day';
+                    dayHeader.textContent = day;
+                    dayHeader.style.fontWeight = 'bold';
+                    calendarGrid.appendChild(dayHeader);
+                });
+
+                // Add calendar days
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day';
+                    dayElement.textContent = i;
+                    
+                    // Only allow selecting future dates
+                    if (i >= new Date().getDate()) {
+                        dayElement.addEventListener('click', function() {
+                            // Remove selection from all days
+                            document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+                            // Add selection to clicked day
+                            this.classList.add('selected');
+                            selectedDate = `October ${i}, 2025`;
+                            
+                            // Show time slots with animation
+                            timeSlots.style.display = 'grid';
+                            timeSlots.classList.add('active');
+                            
+                            // Scroll to time slots
+                            timeSlots.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            
+                          
+                        });
+                    } else {
+                        dayElement.style.color = '#ccc';
+                        dayElement.style.cursor = 'not-allowed';
+                    }
+                    
+                    calendarGrid.appendChild(dayElement);
+                }
+            }
+
+            // Time slot selection
+            const bookingMessageDiv = document.createElement('div');
+            bookingMessageDiv.className = 'booking-message';
+            timeSlots.appendChild(bookingMessageDiv);
+
+            // Add click handlers to time slots
+            document.querySelectorAll('.time-slot').forEach(slot => {
+                slot.addEventListener('click', function() {
+                    if (!selectedSubject || !selectedDate) {
+                        return;
+                    }
+
+                    // Remove selection from all slots
+                    timeSlotElements.forEach(s => s.classList.remove('selected'));
+                    // Add selection to clicked slot
+                    this.classList.add('selected');
+                    selectedTime = this.textContent.trim();
+
+                    // Update and show booking message
+                    bookingMessageDiv.innerHTML = `
+                        <div class="booking-summary" style="
+                            background: #4CAF50;
+                            color: white;
+                            padding: 1.5rem;
+                            border-radius: 8px;
+                            margin-top: 2rem;
+                            text-align: center;
+                            animation: fadeIn 0.3s ease;
+                            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                        ">
+                            <h3 style="margin-bottom: 1rem; font-size: 1.3rem;">Booking Summary</h3>
+                            <div style="margin-bottom: 1.5rem;">
+                                <p style="margin-bottom: 0.5rem;"><strong>Subject:</strong> ${selectedSubject}</p>
+                                <p style="margin-bottom: 0.5rem;"><strong>Date:</strong> ${selectedDate}</p>
+                                <p style="margin-bottom: 1rem;"><strong>Time:</strong> ${selectedTime}</p>
+                            </div>
+                            <button class="confirm-booking-btn" style="
+                                background: white;
+                                color: #4CAF50;
+                                border: none;
+                                padding: 10px 20px;
+                                border-radius: 5px;
+                                font-weight: bold;
+                                cursor: pointer;
+                                display: inline-flex;
+                                align-items: center;
+                                gap: 8px;
+                                transition: all 0.3s ease;
+                            ">
+                                <span class="material-icons">check_circle</span>
+                                Confirm Booking
+                            </button>
+                        </div>
+                    `;
+
+                    // Show message and scroll to it
+                    bookingMessageDiv.style.display = 'block';
+                    setTimeout(() => {
+                        bookingMessageDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+
+                    // Add click event to confirm button
+                    const confirmBtn = bookingMessageDiv.querySelector('.confirm-booking-btn');
+                    confirmBtn.addEventListener('click', function() {
+                        // Generate meet link and store session
+                        const meetLink = generateMeetLink();
+                        const sessions = JSON.parse(localStorage.getItem('sessions') || '[]');
+                        sessions.push({
+                            subject: selectedSubject,
+                            date: selectedDate,
+                            time: selectedTime,
+                            meetLink: meetLink
+                        });
+                        localStorage.setItem('sessions', JSON.stringify(sessions));
+
+                        // Navigate to join session
+                        const params = new URLSearchParams();
+                        params.set('subject', selectedSubject);
+                        params.set('date', selectedDate);
+                        params.set('time', selectedTime);
+                        params.set('meetLink', meetLink);
+                        window.location.href = `join-session.html?${params.toString()}`;
+                    });
+                });
+            });
+
+            // Generate a Google Meet link
+            function generateMeetLink() {
+                const chars = 'abcdefghijklmnopqrstuvwxyz';
+                let link = 'meet.google.com/';
+                // Generate three groups of 3-4 random characters
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 3 + Math.floor(Math.random() * 2); j++) {
+                        link += chars[Math.floor(Math.random() * chars.length)];
+                    }
+                    if (i < 2) link += '-';
+                }
+                return link;
+            }
+
+            // Container navigation
+            if (bookNewBtn) {
+                bookNewBtn.addEventListener('click', function() {
+                    console.log('Book New button clicked');
+                    if (upcomingSessionsContainer) {
+                        upcomingSessionsContainer.classList.add('hidden');
+                    }
+                    if (bookingContainer) {
+                        bookingContainer.classList.remove('hidden');
+                    }
+                });
+            }
+
+            if (backToSessions) {
+                backToSessions.addEventListener('click', function() {
+                    console.log('Back to Sessions button clicked');
+                    if (upcomingSessionsContainer) {
+                        upcomingSessionsContainer.classList.remove('hidden');
+                    }
+                    if (bookingContainer) {
+                        bookingContainer.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Initialize booking container as hidden
+            bookingContainer.style.display = 'none';
+
+            // Subscribe button
+            subscribeBtn.addEventListener('click', function() {
+                if (selectedSubject && selectedDate && selectedTime) {
+                    const meetLink = generateMeetLink();
+                    successMessage.textContent = `You are subscribed for ${selectedSubject} on ${selectedDate} at ${selectedTime}`;
+                    successMessage.classList.add('active');
+                    successActions.classList.add('active');
+                    
+                    // Add to upcoming sessions with click functionality
+                    const upcomingSessions = document.querySelector('.upcoming-sessions');
+                    const newSession = document.createElement('div');
+                    newSession.className = 'session-card';
+                    newSession.style.cursor = 'pointer';
+                    newSession.innerHTML = `
+                        <div class="session-info">
+                            <h4>${selectedSubject.charAt(0).toUpperCase() + selectedSubject.slice(1)}</h4>
+                            <p class="session-date">${selectedDate} - ${selectedTime}</p>
+                        </div>
+                        <span class="material-icons">event</span>
+                    `;
+                    
+                    // Add click event to navigate to join session page
+                    newSession.addEventListener('click', function() {
+                        const params = new URLSearchParams();
+                        params.set('subject', selectedSubject.charAt(0).toUpperCase() + selectedSubject.slice(1));
+                        params.set('date', selectedDate);
+                        params.set('time', selectedTime);
+                        params.set('meetLink', meetLink);
+                        window.location.href = `join-session.html?${params.toString()}`;
+                    });
+                    
+                    upcomingSessions.appendChild(newSession);
+
+                    // Store session details in localStorage for persistence
+                    const sessions = JSON.parse(localStorage.getItem('sessions') || '[]');
+                    sessions.push({
+                        subject: selectedSubject,
+                        date: selectedDate,
+                        time: selectedTime,
+                        meetLink: meetLink
+                    });
+                    localStorage.setItem('sessions', JSON.stringify(sessions));
+                }
+            });
+        });
+    </script>
+</body>
+</html>

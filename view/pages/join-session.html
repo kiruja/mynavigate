@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Session - Navigate</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .session-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .session-container {
+            background: var(--bg-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .session-details {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-label {
+            font-weight: 500;
+            color: var(--accent-color);
+            min-width: 100px;
+        }
+
+        .meet-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .meet-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f5f5f5;
+            border-radius: 4px;
+            margin: 1rem 0;
+            font-family: monospace;
+            word-break: break-all;
+        }
+
+        .join-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .join-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .copy-success {
+            display: none;
+            color: #4CAF50;
+            margin-top: 0.5rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .copy-success.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <a href="../../index.html">
+                    <span class="material-icons">explore</span>
+                    <span class="logo-text">Navigate</span>
+                </a>
+            </div>
+            <h1 class="title">Navigate</h1>
+            <div class="auth-buttons">
+                <button class="auth-btn">
+                    <span class="material-icons">person_outline</span>
+                    <span>Sign In</span>
+                </button>
+                <button class="auth-btn">
+                    <span class="material-icons">person_add</span>
+                    <span>Sign Up</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <nav class="horizontal-menu">
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <a href="services.html">
+                        <span class="material-icons">miscellaneous_services</span>
+                        <span class="menu-text">Services</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="schedule.html">
+                        <span class="material-icons">calendar_today</span>
+                        <span class="menu-text">Schedule</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="dashboard.html">
+                        <span class="material-icons">dashboard</span>
+                        <span class="menu-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="resources.html">
+                        <span class="material-icons">library_books</span>
+                        <span class="menu-text">Resources</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="about.html">
+                        <span class="material-icons">info</span>
+                        <span class="menu-text">About</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="session-grid">
+            <!-- Session Details Container -->
+            <div class="session-container">
+                <h2>Session Details</h2>
+                <div class="session-details">
+                    <span class="detail-label">Subject:</span>
+                    <span class="detail-value" id="sessionSubject">World History</span>
+                    
+                    <span class="detail-label">Teacher:</span>
+                    <span class="detail-value" id="sessionTeacher">John Doe, 11th Grade</span>
+                    
+                    <span class="detail-label">Date:</span>
+                    <span class="detail-value" id="sessionDate">October 20, 2025</span>
+                    
+                    <span class="detail-label">Time:</span>
+                    <span class="detail-value" id="sessionTime">10:00 AM - 11:00 AM</span>
+                </div>
+            </div>
+
+            <!-- Google Meet Container -->
+            <div class="session-container">
+                <div class="meet-container">
+                    <h2>Join Google Meet</h2>
+                    <p>Click the link below to join your session</p>
+                    <div class="meet-link" id="meetLink">meet.google.com/abc-defg-hij</div>
+                    <div class="meet-actions">
+                        <a href="#" class="join-btn" id="joinBtn">
+                            <span class="material-icons">video_camera_front</span>
+                            Join Session
+                        </a>
+                        <button class="copy-btn" id="copyBtn">
+                            <span class="material-icons">content_copy</span>
+                            Copy Link
+                        </button>
+                    </div>
+                    <div class="copy-success" id="copySuccess">Link copied to clipboard!</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@navigate.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link"><span class="material-icons">facebook</span></a>
+                    <a href="#" class="social-link"><span class="material-icons">twitter</span></a>
+                    <a href="#" class="social-link"><span class="material-icons">linkedin</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Navigate. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const subject = urlParams.get('subject');
+            const date = urlParams.get('date');
+            const time = urlParams.get('time');
+            const meetLink = urlParams.get('meetLink');
+
+            // Update session details if parameters exist
+            if (subject) {
+                document.getElementById('sessionSubject').textContent = subject;
+            }
+            if (date) {
+                document.getElementById('sessionDate').textContent = date;
+            }
+            if (time) {
+                document.getElementById('sessionTime').textContent = time;
+            }
+            if (meetLink) {
+                document.getElementById('meetLink').textContent = meetLink;
+                document.getElementById('joinBtn').href = meetLink;
+            }
+
+            // Copy link functionality
+            const copyBtn = document.getElementById('copyBtn');
+            const copySuccess = document.getElementById('copySuccess');
+            
+            copyBtn.addEventListener('click', function() {
+                const meetLink = document.getElementById('meetLink').textContent;
+                navigator.clipboard.writeText(meetLink).then(function() {
+                    copySuccess.classList.add('active');
+                    setTimeout(() => {
+                        copySuccess.classList.remove('active');
+                    }, 3000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
